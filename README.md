@@ -10,8 +10,8 @@ Standalone/QBCore script for taking screenshots by using custom cameras and some
 * Links saved in MySQL database
 
 ## Requirements (QBCore already includes these)
-* Screenshot-basic
-* Oxmysql
+* [Screenshot-basic](https://github.com/citizenfx/screenshot-basic)
+* [Oxmysql](https://github.com/overextended/oxmysql/)
 * As recent game build as possible - **sv_enforceGameBuild 2372** in server.cfg
 
 ## Setup
