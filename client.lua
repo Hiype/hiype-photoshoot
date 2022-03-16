@@ -1,4 +1,10 @@
-local QBCore = exports['qb-core']:GetCoreObject()
+
+local QBCore = nil
+
+if Config.useQBCore then
+    QBCore = exports['qb-core']:GetCoreObject()
+end
+
 local player = PlayerPedId()
 local UI_hidden = false
 local inProgress = false
@@ -6,22 +12,26 @@ local inside = false
 local screenW, screenH = GetScreenResolution()
 local currentCamera = Config.defaultCamera
 
-RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
-    LocalPlayer.state:set('isLoggedIn', true, false)
-end)
+if Config.useQBCore then
+    RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+        LocalPlayer.state:set('isLoggedIn', true, false)
+    end)
 
-RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
-    LocalPlayer.state:set('isLoggedIn', false, false)
-end)
+    RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
+        LocalPlayer.state:set('isLoggedIn', false, false)
+    end)
+end
 
 AddEventHandler('onResourceStart', function(resource)
     if resource == GetCurrentResourceName() then
-        LocalPlayer.state:set('isLoggedIn', true, false)
+        if Config.useQBCore then
+            LocalPlayer.state:set('isLoggedIn', true, false)
+        end
 
         local blipCoords = Config.entranceLocation
         if Config.showBlip then
             local blip = AddBlipForCoord(blipCoords.x, blipCoords.y, blipCoords.z)
-            SetBlipSprite(blip, 744)
+            SetBlipSprite(blip, 184)
             SetBlipScale(blip, 0.8)
             SetBlipAsShortRange(blip, true)
             BeginTextCommandSetBlipName("STRING")
@@ -118,7 +128,9 @@ local function takeScreenshot()
     exports['screenshot-basic']:requestScreenshotUpload('https://api.imgur.com/3/upload', 'image', function(data)
         local response = json.decode(data)
         TriggerEvent('chat:addMessage', { args = { response.data.link } })
-        sendToDB(response.data.link, QBCore.Functions.GetPlayerData().citizenid)
+        local citizenid = nil
+        if Config.useQBCore then citizenid = QBCore.Functions.GetPlayerData().citizenid else citizenid = PlayerId() end
+        sendToDB(response.data.link, citizenid)
     end)
 end
 
@@ -139,8 +151,12 @@ local function TakePictures()
         end
     end
     if Config.hideHUD then
-        ExecuteCommand("stop qb-hud")
-        hideRadar(player_ped_id)
+        if Config.useQBCore then
+            ExecuteCommand("stop qb-hud")
+            hideRadar(player_ped_id)
+        else
+
+        end
     end
     if Config.setVehicleInPlace then
         SetEntityCoords(veh, studioLocation.x, studioLocation.y, studioLocation.z, 0, 0, 0, false)
@@ -174,7 +190,7 @@ local function TakePictures()
     RenderScriptCams(false, true, 2000, true, true)
     inProgress = false
     Wait(2000)
-    if Config.hideHUD then
+    if Config.hideHUD and Config.useQBCore then
         ExecuteCommand("start qb-hud")
     end
 end

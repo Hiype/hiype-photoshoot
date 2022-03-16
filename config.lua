@@ -14,6 +14,7 @@ Config.studioCameras = {
     { location = vector3(-71.68, -827.6, 285.0), FOV = 40 },
 }
 
+Config.useQBCore = true
 Config.camPointAtPlayer = true
 Config.hideHUD = true
 Config.playerCanGetOutOfCar = true
