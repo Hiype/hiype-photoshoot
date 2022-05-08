@@ -16,10 +16,16 @@ Standalone/QBCore script for taking screenshots by using custom cameras and some
 * Links saved in MySQL database
 
 ## Requirements (QBCore already includes these)
+<<<<<<< HEAD
 * Screenshot-basic
 * Oxmysql
 * MenuV
 * As recent game build as possible - **sv_enforceGameBuild 2545** in server.cfg
+=======
+* [Screenshot-basic](https://github.com/citizenfx/screenshot-basic)
+* [Oxmysql](https://github.com/overextended/oxmysql/)
+* As recent game build as possible - **sv_enforceGameBuild 2372** in server.cfg
+>>>>>>> 558f30cd2fd4f555618f06760e0eb539686c4df8
 
 ## Setup
 1. Clone the repository
@@ -35,4 +41,8 @@ Once there, go up the elevator and press E to start a photoshoot.
 
 ![Photoshoot](https://i.imgur.com/VCN54oD.png)
 
+<<<<<<< HEAD
 From there you can change camera settings in the menu.
+=======
+From there you can change between cameras that you have set up in config.lua file and take a screenshot without any hud elements in the way.
+>>>>>>> 558f30cd2fd4f555618f06760e0eb539686c4df8
