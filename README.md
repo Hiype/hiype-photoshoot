@@ -1,18 +1,25 @@
 # FiveM/QBCore photoshoot script
 Standalone/QBCore script for taking screenshots by using custom cameras and some cool animations.
 
-**For now QBCore HUD is disabled server-wide when taking screenshots, once the HUD can be hidden without disabling the resource, will fix this problem**
+## ‼️ Qb users read this ‼️
+**For now the only way to hide qb-hud is stopping the resource by setting HideHUD to true, once the HUD can be hidden without disabling the resource, will fix this problem.**<br>
+**A good workaround is not stopping qb-hud and enabling cinematic mode using /menu**
+
+## Preview video
+**Coming soon**
 
 ## Features
 * Very customizable, to the point where you can make photoshoot studios anywhere
-* Put cameras anywhere
+* Built in menu for different camera options
+* Place cameras anywhere
 * Screenshots uploaded straight to Imgur
 * Links saved in MySQL database
 
 ## Requirements (QBCore already includes these)
 * Screenshot-basic
 * Oxmysql
-* As recent game build as possible - **sv_enforceGameBuild 2372** in server.cfg
+* MenuV
+* As recent game build as possible - **sv_enforceGameBuild 2545** in server.cfg
 
 ## Setup
 1. Clone the repository
@@ -28,4 +35,4 @@ Once there, go up the elevator and press E to start a photoshoot.
 
 ![Photoshoot](https://i.imgur.com/VCN54oD.png)
 
-From there you can change between cameras that you have set up in config.lua file and take a screenshot without any hud elements in the way.
+From there you can change camera settings in the menu.

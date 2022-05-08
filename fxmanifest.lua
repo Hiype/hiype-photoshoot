@@ -2,26 +2,27 @@ fx_version 'cerulean'
 game 'gta5'
 
 author 'Hiype'
-version '1.0.0'
+version '2.0.0'
 
 client_scripts {
-    "src/RageUI.lua",
-	"src/Menu.lua",
-	"src/MenuController.lua",
-	"src/components/*.lua",
-	"src/elements/*.lua",
-	"src/items/*.lua",
-	"src/panels/*.lua",
-	"src/windows/*.lua",
-    'client.lua',
+	'@menuv/menuv.lua',
+	'@PolyZone/client.lua',
+    '@PolyZone/BoxZone.lua',
+    'client/client.lua',
+	'client/cam_menu.lua'
 }
 
 server_scripts {
 	'@oxmysql/lib/MySQL.lua',
-	'server.lua',
+	'server/server.lua'
 }
 
-shared_scripts { 
+shared_scripts {
+	'@qb-core/shared/locale.lua',
     'config.lua',
 	'lang.lua'
+}
+
+dependencies {
+    'menuv'
 }

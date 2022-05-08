@@ -9,11 +9,11 @@ AddEventHandler('onResourceStart', function(resourceName)
         return
     end
 
-    MySQL.insert(string.format("CREATE TABLE IF NOT EXISTS %s (ImageID int AUTO_INCREMENT PRIMARY KEY , image text, citizenid text)", Config.tableName), function(id) end)
+    MySQL.insert(string.format("CREATE TABLE IF NOT EXISTS %s (ImageID int AUTO_INCREMENT PRIMARY KEY , image text, citizenid text)", Conf.TableName), function(id) end)
 end)
 
 RegisterNetEvent('hiype-sst:saveImage', function(image_link, citizenid)
-    MySQL.insert(string.format('INSERT INTO %s (image, citizenid) VALUES ("%s", "%s")', Config.tableName, image_link, citizenid), function(id)
+    MySQL.insert(string.format('INSERT INTO %s (image, citizenid) VALUES ("%s", "%s")', Conf.TableName, image_link, citizenid), function(id)
         print("Image link: " .. tostring(image_link) .. " id:" .. tostring(id))
     end)
 end)
