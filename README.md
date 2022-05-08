@@ -29,10 +29,10 @@ Standalone/QBCore script for taking screenshots by using custom cameras and some
 Find the camera blip on the map and enter the elevator.
 ![Map](https://i.imgur.com/gKrcjOq.png)
 
-![Entrance](https://i.imgur.com/evfM7ud.png)
+![Entrance](https://i.imgur.com/wflmMDG.png)
 
 Once there, go up the elevator and press E to start a photoshoot.
 
-![Photoshoot](https://i.imgur.com/VCN54oD.png)
+![Photoshoot](https://i.imgur.com/bTA6tWb.png)
 
 From there you can change camera settings in the menu.
