@@ -11,6 +11,7 @@ local inProgress = false
 local inside = false
 local screenW, screenH = GetScreenResolution()
 currentCamera = Conf.DefaultCamera
+isPlayerInvisible = Conf.PlayerInvisible
 cams = {}
 
 local entranceBox
@@ -103,12 +104,25 @@ local function Draw2DText(content, font, colour, scale, x, y)
     DrawText(x, y)
 end
 
+CreateThread(function()
+    while true do
+        Wait(500)
+        while inProgress do
+            Wait(1)
+            if isPlayerInvisible then 
+                SetEntityLocallyInvisible(PlayerPedId())
+            end
+        end
+    end
+end)
+
 local function hideRadar(player_ped_id)
     CreateThread(function()
         while inProgress do
             Wait(1)
             HideHudAndRadarThisFrame()
-            if Conf.PlayerInvisible then SetEntityLocallyInvisible(player_ped_id) end
+            print(isPlayerInvisible)
+            SetPlayerInvisibleLocally(player_ped_id, isPlayerInvisible)
         end
     end)
 end

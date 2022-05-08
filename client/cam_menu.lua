@@ -38,6 +38,13 @@ local point_at_player_checkbox = menu:AddCheckbox({
     description = text_point_at_player_description()
 })
 
+local invisible_player_checkbox = menu:AddCheckbox({
+    icon = '🕶',
+    label = text_player_invisible(),
+    value = Conf.PlayerInvisible,
+    description = text_player_invisible_description()
+})
+
 take_picture_button:On("select", function()
     closeMenu()
     takeScreenshot()
@@ -58,6 +65,16 @@ point_at_player_checkbox:On('change', function(item, newValue, oldValue)
         PointCamAtEntity(cams[currentCamera], ped_id, 0.0, 0.0, 0.0, true)
     else
         PointCamAtEntity(cams[currentCamera], GetVehiclePedIsIn(ped_id, false), 0.0, 0.0, 0.0, true)
+    end
+end)
+
+invisible_player_checkbox:On('change', function(item, newValue, oldValue)
+    if newValue then
+        -- SetEntityLocallyInvisible(PlayerPedId())
+        isPlayerInvisible = true
+    else
+        -- SetPlayerInvisibleLocally(PlayerPedId(), false)
+        isPlayerInvisible = false
     end
 end)
 

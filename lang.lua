@@ -10,7 +10,9 @@ local Translations = {
         fov = "FOV",
         fov_description = "Change current camera FOV",
         point_at_player = "Point at player",
-        point_at_player_description = "Toggles pointing current camera at player if inside vehicle"
+        point_at_player_description = "Toggles pointing current camera at player if inside vehicle",
+        player_invisible = "Invisible player",
+        player_invisible_description = "Makes player invisible locally",
     },
 }
 
@@ -108,5 +110,21 @@ function text_point_at_player_description()
         return Lang:t("info.point_at_player_description")
     else
         return Translations.info.point_at_player_description
+    end
+end
+
+function text_player_invisible()
+    if Conf.UseQBCore then
+        return Lang:t("info.player_invisible")
+    else
+        return Translations.info.player_invisible
+    end
+end
+
+function text_player_invisible_description()
+    if Conf.UseQBCore then
+        return Lang:t("info.player_invisible_description")
+    else
+        return Translations.info.player_invisible_description
     end
 end
