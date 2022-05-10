@@ -6,7 +6,7 @@ Standalone/QBCore script for taking screenshots by using custom cameras and some
 **A good workaround is not stopping qb-hud and enabling cinematic mode using /menu**
 
 ## Preview video
-**Coming soon**
+![Preview video](https://www.youtube.com/watch?v=3CS9mpsl_7Q)
 
 ## Features
 * Very customizable, to the point where you can make photoshoot studios anywhere

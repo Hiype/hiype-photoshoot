@@ -18,14 +18,26 @@ local entranceBox
 local exitBox
 local studioBox
 local startBox
+local blip
 
 if Conf.UseQBCore then
     RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
         LocalPlayer.state:set('isLoggedIn', true, false)
+
+        if Conf.ShowBlip and not blip then
+            blip = AddBlipForCoord(blipCoords.x, blipCoords.y, blipCoords.z)
+            SetBlipSprite(blip, 184)
+            SetBlipScale(blip, 0.8)
+            SetBlipAsShortRange(blip, true)
+            BeginTextCommandSetBlipName("STRING")
+            AddTextComponentString(Conf.BlipName)
+            EndTextCommandSetBlipName(blip)
+        end
     end)
 
     RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
         LocalPlayer.state:set('isLoggedIn', false, false)
+        
     end)
 end
 
@@ -59,8 +71,8 @@ AddEventHandler('onResourceStart', function(resource)
         end
 
         local blipCoords = Conf.EntranceSpawnLocation
-        if Conf.ShowBlip then
-            local blip = AddBlipForCoord(blipCoords.x, blipCoords.y, blipCoords.z)
+        if Conf.ShowBlip and not blip then
+            blip = AddBlipForCoord(blipCoords.x, blipCoords.y, blipCoords.z)
             SetBlipSprite(blip, 184)
             SetBlipScale(blip, 0.8)
             SetBlipAsShortRange(blip, true)
