@@ -171,10 +171,14 @@ end
 function takeScreenshot()
     exports['screenshot-basic']:requestScreenshotUpload('https://api.imgur.com/3/upload', 'image', function(data)
         local response = json.decode(data)
-        TriggerEvent('chat:addMessage', { args = { response.data.link } })
-        local citizenid = nil
-        if Conf.UseQBCore then citizenid = QBCore.Functions.GetPlayerData().citizenid else citizenid = PlayerId() end
-        sendToDB(response.data.link, citizenid)
+        if response.data then
+            TriggerEvent('chat:addMessage', { args = { response.data.link } })
+            local citizenid = nil
+            if Conf.UseQBCore then citizenid = QBCore.Functions.GetPlayerData().citizenid else citizenid = PlayerId() end
+            sendToDB(response.data.link, citizenid)
+        else
+            QBCore.Functions.Notify(text_upload_failed(), 'error')
+        end
         inProgress = false
     end)
 end

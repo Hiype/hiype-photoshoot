@@ -14,6 +14,9 @@ local Translations = {
         player_invisible = "Invisible player",
         player_invisible_description = "Makes player invisible locally",
     },
+    error = {
+        upload_failed = "Upload failed"
+    }
 }
 
 Lang = nil
@@ -126,5 +129,13 @@ function text_player_invisible_description()
         return Lang:t("info.player_invisible_description")
     else
         return Translations.info.player_invisible_description
+    end
+end
+
+function text_upload_failed()
+    if Conf.UseQBCore then
+        return Lang:t("error.upload_failed")
+    else
+        return Translations.error.upload_failed
     end
 end
