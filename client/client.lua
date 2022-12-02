@@ -24,6 +24,7 @@ if Conf.UseQBCore then
     RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
         LocalPlayer.state:set('isLoggedIn', true, false)
 
+        local blipCoords = Conf.EntranceSpawnLocation
         if Conf.ShowBlip and not blip then
             blip = AddBlipForCoord(blipCoords.x, blipCoords.y, blipCoords.z)
             SetBlipSprite(blip, 184)
